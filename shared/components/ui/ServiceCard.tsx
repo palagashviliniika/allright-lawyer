@@ -4,11 +4,16 @@ import { Text } from "./Text";
 interface ServiceCardProps {
   icon: string;
   label: string;
+  isActive?: boolean;
+  onClick?: () => void;
 }
 
-export function ServiceCard({ icon, label }: ServiceCardProps) {
+export function ServiceCard({ icon, label, isActive = false, onClick }: ServiceCardProps) {
   return (
-    <div className="relative group flex flex-col items-center p-6 rounded-t-2xl bg-gradient-to-b from-brand-blue/40 to-brand-dark border-b-4 border-brand-blue transition-transform duration-300 hover:-translate-y-1 cursor-pointer">
+    <div
+      onClick={onClick}
+      className="relative flex flex-col items-center p-6 rounded-t-2xl bg-gradient-to-b from-brand-blue/40 to-brand-dark cursor-pointer"
+    >
       <div className="pb-2 rounded-full">
         <Image
           src={icon}
@@ -21,7 +26,9 @@ export function ServiceCard({ icon, label }: ServiceCardProps) {
       <Text className="text-white text-center font-semibold text-sm md:text-base">
         {label}
       </Text>
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0 border-l-8 border-r-8 border-b-8 border-l-transparent border-r-transparent border-b-brand-blue" />
+      {isActive && (
+        <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-0 border-l-8 border-r-8 border-t-8 border-l-transparent border-r-transparent border-t-white z-10" />
+      )}
     </div>
   );
 }

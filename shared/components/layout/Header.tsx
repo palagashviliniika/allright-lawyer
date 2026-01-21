@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import Link from "next/link";
 import Image from "next/image";
 import { NAV_LINKS } from "@/shared/enums/navigation";
+import { CTAButton } from "@/shared/components/ui/CTAButton";
 
 export function Header() {
   const t = useTranslations("navigation");
@@ -36,12 +37,7 @@ export function Header() {
             ))}
           </ul>
 
-          <a
-            href="#contact"
-            className="hidden md:inline-flex cursor-pointer text-lg font-bold px-8 py-3 text-white rounded-full whitespace-nowrap shrink-0 bg-gradient-to-r from-brand-blue-dark to-brand-blue border border-brand-blue hover:opacity-90 transition-opacity duration-300"
-          >
-            {t("cta")}
-          </a>
+          <CTAButton text={t("cta")} className="hidden md:inline-flex" />
 
           <button
             className="md:hidden p-2 text-white"

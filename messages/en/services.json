@@ -5,7 +5,13 @@
     "physical": "Physical Persons",
     "audits": "Audits",
     "court": "Court",
-    "realEstate": "Real Estate & Property Law"
+    "realEstate": "Real Estate"
+  },
+  "descriptions": {
+    "legal": "Comprehensive legal assistance for businesses and organizations: company formation, corporate governance, contract drafting and review, regulatory compliance, and business dispute resolution. All Right supports your business at every stage.",
+    "physical": "Legal assistance for individuals: real estate transactions, family law matters, employment agreements, consumer protection, and various types of legal disputes. All Right helps you at every step.",
+    "audits": "Professional audit services including financial audits, compliance audits, internal control assessments, and regulatory reviews. We ensure transparency and accuracy in your business operations.",
+    "court": "Expert court representation for civil, commercial, and administrative cases. Our experienced attorneys will protect your interests through litigation, appeals, and alternative dispute resolution.",
+    "realEstate": "Full-service real estate legal support: property transactions, title verification, lease agreements, construction contracts, and property dispute resolution. Secure your investments with All Right."
   }
 }
-
