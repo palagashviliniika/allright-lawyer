@@ -3,6 +3,7 @@ import { Hero } from "@/shared/components/sections/Hero";
 import { Services } from "@/shared/components/sections/Services";
 import { WhyChooseUs } from "@/shared/components/sections/WhyChooseUs";
 import { TrustedClients } from "@/shared/components/sections/TrustedClients";
+import { FAQ } from "@/shared/components/sections/FAQ";
 
 export default async function Home({
   params,
@@ -18,6 +19,7 @@ export default async function Home({
       <Services />
       <WhyChooseUs />
       <TrustedClients />
+      <FAQ />
     </main>
   );
 }
