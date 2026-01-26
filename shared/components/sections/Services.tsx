@@ -18,7 +18,7 @@ export function Services() {
   const activeServiceData = SERVICES.find((s) => s.key === activeService);
 
   return (
-    <section id="services" className="bg-brand-black py-8 md:py-12">
+    <section id="services" className="py-8 md:py-12">
       <div className="max-w-7xl mx-auto px-6">
         <SectionHeader title={t("title")} dotsPosition="right" />
 

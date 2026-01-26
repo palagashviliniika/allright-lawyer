@@ -11,7 +11,7 @@ export function Hero() {
     const t = useTranslations("hero");
 
     return (
-        <section className="relative pt-20 min-h-[400px] border-b-4 border-brand-blue">
+        <section id="about" className="relative pt-20 min-h-[400px] border-b-4 border-brand-blue">
             <div className="absolute inset-0 flex">
                 <div className="w-1/6 bg-black" />
                 <div className="relative w-5/6">

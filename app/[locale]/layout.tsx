@@ -4,6 +4,8 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 import { Header } from "@/shared/components/layout/Header";
+import { Footer } from "@/shared/components/layout/Footer";
+import { ScrollToTop } from "@/shared/components/ui/ScrollToTop";
 import "../globals.css";
 
 const firaGO = localFont({
@@ -69,6 +71,8 @@ export default async function LocaleLayout({
         <NextIntlClientProvider messages={messages}>
           <Header />
           {children}
+          <Footer />
+          <ScrollToTop />
         </NextIntlClientProvider>
       </body>
     </html>

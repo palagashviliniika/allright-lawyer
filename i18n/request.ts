@@ -10,7 +10,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
   }
 
   // Load all message files from the locale folder
-  const [metadata, navigation, hero, common, services, whyChooseUs, trustedClients, faq] = await Promise.all([
+  const [metadata, navigation, hero, common, services, whyChooseUs, trustedClients, faq, contact] = await Promise.all([
     import(`@/messages/${locale}/metadata.json`),
     import(`@/messages/${locale}/navigation.json`),
     import(`@/messages/${locale}/hero.json`),
@@ -19,6 +19,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
     import(`@/messages/${locale}/whyChooseUs.json`),
     import(`@/messages/${locale}/trustedClients.json`),
     import(`@/messages/${locale}/faq.json`),
+    import(`@/messages/${locale}/contact.json`),
   ]);
 
   return {
@@ -32,6 +33,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
       whyChooseUs: whyChooseUs.default,
       trustedClients: trustedClients.default,
       faq: faq.default,
+      contact: contact.default,
     },
   };
 });

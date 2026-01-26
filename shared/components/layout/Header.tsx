@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { NAV_LINKS } from "@/shared/enums/navigation";
 import { CTAButton } from "@/shared/components/ui/CTAButton";
+import { handleSmoothScroll } from "@/lib/utils";
 
 export function Header() {
   const t = useTranslations("navigation");
@@ -29,7 +30,8 @@ export function Header() {
               <li key={link.key}>
                 <a
                   href={link.href}
-                  className="text-white text-lg font-bold hover:text-brand-blue transition-colors whitespace-nowrap"
+                  onClick={(e) => handleSmoothScroll(e, link.href)}
+                  className="text-white text-lg font-bold hover:text-brand-blue transition-colors whitespace-nowrap cursor-pointer"
                 >
                   {t(link.key)}
                 </a>
@@ -37,7 +39,7 @@ export function Header() {
             ))}
           </ul>
 
-          <CTAButton text={t("cta")} className="hidden md:inline-flex" />
+          <CTAButton text={t("cta")} href="#contact" className="hidden md:inline-flex" />
 
           <button
             className="md:hidden p-2 text-white"

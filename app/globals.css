@@ -127,8 +127,13 @@
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     @apply bg-background text-foreground;
     font-family: var(--font-fira-go), sans-serif;
+    background: linear-gradient(to bottom, var(--color-brand-black) 0%, var(--color-brand-black) 30%, var(--color-brand-navy) 100%);
+    min-height: 100vh;
   }
 }

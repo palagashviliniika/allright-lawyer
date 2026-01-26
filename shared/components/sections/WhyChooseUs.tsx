@@ -44,7 +44,7 @@ export function WhyChooseUs() {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <section id="why-us" className="bg-brand-black py-12 md:py-16 flex flex-col items-center justify-center">
+    <section id="why-us" className="py-12 md:py-16 flex flex-col items-center justify-center">
       <div className="max-w-7xl px-6">
         <SectionHeader title={t("title")} dotsPosition="left" />
       </div>

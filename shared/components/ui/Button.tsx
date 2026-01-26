@@ -1,4 +1,6 @@
-import { cn } from "@/lib/utils";
+"use client";
+
+import { cn, handleSmoothScroll } from "@/lib/utils";
 import { buttonBaseStyles, buttonVariantStyles } from "@/shared/styles";
 
 type ButtonVariant = keyof typeof buttonVariantStyles;
@@ -21,14 +23,18 @@ export function Button({
 
   if (href) {
     return (
-      <a href={href} className={styles}>
+      <a 
+        href={href} 
+        className={styles}
+        onClick={href.startsWith("#") ? (e) => handleSmoothScroll(e, href) : undefined}
+      >
         {children}
       </a>
     );
   }
 
   return (
-    <button className={styles} {...props}>
+    <button type={props.type || "button"} className={styles} {...props}>
       {children}
     </button>
   );
