@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { CTAButton } from "@/shared/components/ui/CTAButton";
 import { AnimatedErrorMessage } from "@/shared/components/ui/AnimatedErrorMessage";
+import { GoogleMap } from "@/shared/components/ui/GoogleMap";
 import { cn } from "@/lib/utils";
 
 export function Contact() {
@@ -103,7 +104,6 @@ export function Contact() {
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
-    // Clear error when user starts typing
     if (errors[name as keyof typeof errors]) {
       setErrors((prev) => ({ ...prev, [name]: undefined }));
     }
@@ -115,7 +115,6 @@ export function Contact() {
         <SectionHeader title={t("title")} dotsPosition="left" />
 
         <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-          {/* Left Column - Contact Information */}
           <div className="flex flex-col gap-6">
             <div className="flex items-center gap-4">
               <div className="shrink-0">
@@ -130,7 +129,6 @@ export function Contact() {
               <p className="text-white text-xl">{t("address")}</p>
             </div>
 
-            {/* Phone */}
             <div className="flex items-center gap-4">
               <div className="shrink-0">
                 <Image
@@ -144,15 +142,11 @@ export function Contact() {
               <p className="text-white text-xl">{t("phone")}</p>
             </div>
 
-            {/* Map Placeholder */}
-            <div className="mt-5 w-full h-64 bg-gray-200 rounded overflow-hidden">
-              <div className="w-full h-full flex items-center justify-center text-gray-400 text-sm">
-                Map placeholder
-              </div>
+            <div className="mt-5 w-full">
+              <GoogleMap className="mt-5" />
             </div>
           </div>
 
-          {/* Right Column - Contact Form */}
           <div>
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
               <div>

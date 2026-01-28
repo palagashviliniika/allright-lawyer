@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { Resend } from 'resend';
 
 export async function POST(request: NextRequest) {
   try {
@@ -23,72 +24,52 @@ export async function POST(request: NextRequest) {
     }
 
     // Send email to the recipient
-    const recipientEmail = 'palagashviliniika@gmail.com';
+    const recipientEmail = process.env.NEXT_PUBLIC_RECEPIENT_EMAIL
     
-    // Email sending implementation
-    // Option 1: Using Resend (recommended for production)
-    // Install: npm install resend
-    // Then uncomment and configure:
-    /*
-    import { Resend } from 'resend';
-    const resend = new Resend(process.env.RESEND_API_KEY);
-    
-    const emailResult = await resend.emails.send({
-      from: process.env.FROM_EMAIL || 'contact@yourdomain.com',
-      to: recipientEmail,
-      replyTo: email,
-      subject: `Contact Form Submission from ${name}`,
-      html: `
-        <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Message:</strong></p>
-        <p>${message.replace(/\n/g, '<br>')}</p>
-      `,
-    });
-    */
+    // Check if Resend API key is configured
+    if (!process.env.NEXT_PUBLIC_RESEND_API_KEY) {
+      console.error('RESEND_API_KEY is not configured');
+      return NextResponse.json(
+        { error: 'Email service is not configured' },
+        { status: 500 }
+      );
+    }
 
-    // Option 2: Using Nodemailer (alternative)
-    // Install: npm install nodemailer
-    // Then uncomment and configure:
-    /*
-    import nodemailer from 'nodemailer';
+    // Initialize Resend
+    const resend = new Resend(process.env.NEXT_PUBLIC_RESEND_API_KEY);
     
-    const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: parseInt(process.env.SMTP_PORT || '587'),
-      secure: false,
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASSWORD,
-      },
-    });
-    
-    await transporter.sendMail({
-      from: process.env.FROM_EMAIL || email,
-      to: recipientEmail,
-      replyTo: email,
-      subject: `Contact Form Submission from ${name}`,
-      html: `
-        <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Message:</strong></p>
-        <p>${message.replace(/\n/g, '<br>')}</p>
-      `,
-    });
-    */
+    // Send email using Resend
+    try {
+      const emailResult = await resend.emails.send({
+        from: process.env.NEXT_PUBLIC_FROM_EMAIL || 'onboarding@resend.dev',
+        to: recipientEmail as string,
+        replyTo: email,
+        subject: `Contact Form Submission from ${name}`,
+        html: `
+          <h2>New Contact Form Submission</h2>
+          <p><strong>Name:</strong> ${name}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Message:</strong></p>
+          <p>${message.replace(/\n/g, '<br>')}</p>
+        `,
+      });
 
-    // For development/testing, log the email content
-    // In production, replace this with actual email sending
-    console.log('Contact form submission:', {
-      to: recipientEmail,
-      from: email,
-      name,
-      message,
-    });
-    
-    // TODO: Replace console.log with actual email service in production
+      if (emailResult.error) {
+        console.error('Resend error:', emailResult.error);
+        return NextResponse.json(
+          { error: 'Failed to send email' },
+          { status: 500 }
+        );
+      }
+
+      console.log('Email sent successfully:', emailResult.data);
+    } catch (error) {
+      console.error('Error sending email:', error);
+      return NextResponse.json(
+        { error: 'Failed to send email' },
+        { status: 500 }
+      );
+    }
 
     // Return success response
     return NextResponse.json(

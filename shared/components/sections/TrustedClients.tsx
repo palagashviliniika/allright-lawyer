@@ -23,14 +23,13 @@ export function TrustedClients() {
   const t = useTranslations("trustedClients");
 
   return (
-    <section className="py-12 md:py-16">
+    <section id="trusted-clients" className="py-12 md:py-16">
       <div className="max-w-7xl mx-auto px-6">
         <SectionHeader title={t("title")} dotsPosition="left" />
       </div>
 
       <div className="mt-8 max-w-7xl mx-auto px-4 w-full">
         <div className="flex items-center gap-4">
-          {/* Left Arrow */}
           <button
             className="clients-prev shrink-0 w-10 h-10 rounded-full bg-brand-navy flex items-center justify-center text-brand-blue hover:bg-brand-navy/80 hover:text-white transition-colors duration-300 cursor-pointer"
             aria-label="Previous"
@@ -38,7 +37,6 @@ export function TrustedClients() {
             <ChevronLeft className="w-6 h-6 text-white" />
           </button>
 
-          {/* Swiper */}
           <Swiper
             slidesPerView={2}
             spaceBetween={20}
@@ -81,7 +79,6 @@ export function TrustedClients() {
             ))}
           </Swiper>
 
-          {/* Right Arrow */}
           <button
             className="clients-next shrink-0 w-10 h-10 rounded-full bg-brand-navy flex items-center justify-center text-brand-blue hover:bg-brand-navy/80 hover:text-white transition-colors duration-300 cursor-pointer"
             aria-label="Next"
