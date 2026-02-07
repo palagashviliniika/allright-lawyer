@@ -28,10 +28,10 @@ export function Hero() {
             </div>
 
             <div className="relative z-10 max-w-7xl mx-auto px-6 py-12 md:py-16">
-                <div className="max-w-4xl">
+                <div className="flex max-w-4xl flex-col items-center text-center md:items-start md:text-left">
                     <Heading
                         level="h5"
-                        className="text-white mb-2 text-center"
+                        className="text-white mb-2"
                     >
                         {t("label")}
                     </Heading>
@@ -47,16 +47,16 @@ export function Hero() {
 
                     <Text
                         variant="lead"
-                        className="text-white mb-8 max-w-3xl"
+                        className="text-left text-white mb-8 max-w-3xl"
                     >
                         {t("description")}
                     </Text>
 
-                    <div className="flex flex-wrap gap-4">
-                        <Button href="#contact" variant="primary">
+                    <div className="flex w-full flex-col gap-4 md:w-auto md:flex-row">
+                        <Button href="#contact" variant="primary" className="w-full md:w-auto">
                             {t("cta")}
                         </Button>
-                        <Button href="#contact" variant="outline">
+                        <Button href="#contact" variant="outline" className="w-full md:w-auto">
                             {t("ctaSecondary")}
                         </Button>
                     </div>

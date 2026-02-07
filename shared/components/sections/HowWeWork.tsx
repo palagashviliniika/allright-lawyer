@@ -15,13 +15,13 @@ export function HowWeWork() {
         <SectionHeader
           title={`${t("titlePrefix")} ${t("titleHighlight")}`}
           dotsPosition="right"
-          className="mb-10"
+          className="md:mb-10"
         />
 
         {/* One container: grid — left 1/4, middle (blue, taller) 1/4, right (white) 1/2 */}
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr_2fr] gap-0 min-h-[420px] overflow-visible pt-10">
-          {/* Left: Cases — dark navy panel with header and description */}
-          <div className="flex flex-col rounded-t-2xl lg:rounded-l-2xl lg:rounded-tr-none overflow-hidden bg-brand-navy shadow-lg p-6 md:p-8 min-h-[420px]">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr_2fr] gap-0 min-h-0 lg:min-h-[420px] overflow-visible pt-10">
+          {/* Left: Cases — dark navy panel with header and description; fit content on mobile */}
+          <div className="flex flex-col rounded-t-2xl lg:rounded-l-2xl lg:rounded-tr-none overflow-hidden bg-brand-navy shadow-lg p-6 md:p-8 min-h-0 lg:min-h-[420px]">
             <Heading level="h4" className="text-white font-extrabold text-center mb-4">
               {t("left.caseHeader")}
             </Heading>
@@ -30,9 +30,9 @@ export function HowWeWork() {
             </Text>
           </div>
 
-          {/* Middle: bright blue section — taller, centered and on top of left/right */}
-          <div className="hidden lg:block relative min-h-[420px] overflow-visible">
-            <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 flex flex-col min-h-[520px] z-10 rounded-2xl overflow-hidden bg-brand-blue shadow-xl p-6 md:p-8">
+          {/* Middle: bright blue section — on mobile in flow; on desktop absolute, taller, centered */}
+          <div className="relative min-h-0 lg:min-h-[420px] overflow-visible">
+            <div className="flex flex-col min-h-0 lg:absolute lg:left-0 lg:right-0 lg:top-1/2 lg:-translate-y-1/2 lg:min-h-[520px] lg:z-10 rounded-none lg:rounded-2xl overflow-hidden bg-brand-blue shadow-xl p-6 md:p-8">
               <Heading level="h4" className="text-white mb-3 font-extrabold text-center">
                 {t("middle.caseHeader")}
               </Heading>

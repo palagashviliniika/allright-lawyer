@@ -20,8 +20,12 @@ export function FAQ() {
 
   return (
     <section id="faq" className="py-12 md:py-16">
-      <div className="max-w-7xl mx-auto px-6">
-        <SectionHeader title={t("title")} dotsPosition="right" />
+      <div className="max-w-7xl mx-auto px-6 flex flex-col items-center justify-center">
+        <SectionHeader
+          title={t("title")}
+          dotsPosition="right"
+          className="max-w-[220px] md:max-w-full"
+        />
 
         <div className="mt-8">
           <Accordion type="single" collapsible defaultValue="q1" className="space-y-4">

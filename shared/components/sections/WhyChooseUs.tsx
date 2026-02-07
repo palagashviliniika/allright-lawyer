@@ -1,15 +1,14 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Swiper, SwiperSlide } from "swiper/react";
 import type { Swiper as SwiperType } from "swiper";
-import { Pagination, Navigation } from "swiper/modules";
+import { Autoplay } from "swiper/modules";
 import { SectionHeader } from "@/shared/components/ui/SectionHeader";
 
 import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
 
 // Placeholder images for testing
 const IMAGES = [
@@ -51,16 +50,22 @@ export function WhyChooseUs() {
 
       <div className="mt-8 max-w-7xl mx-auto px-4 w-full">
         <Swiper
-          slidesPerView={3}
-          spaceBetween={30}
+          slidesPerView={1}
+          spaceBetween={16}
           loop={true}
-          pagination={{
-            clickable: true,
-          }}
-          navigation={true}
-          modules={[Pagination, Navigation]}
-          className="mySwiper"
           centeredSlides={true}
+          autoplay={{
+            delay: 5000,
+            disableOnInteraction: false,
+          }}
+          modules={[Autoplay]}
+          className="why-choose-us-swiper"
+          breakpoints={{
+            768: {
+              slidesPerView: 3,
+              spaceBetween: 30,
+            },
+          }}
           onSlideChange={(swiper: SwiperType) => {
             setActiveIndex(swiper.realIndex);
           }}
@@ -71,14 +76,16 @@ export function WhyChooseUs() {
           {IMAGES.map((image, index) => (
             <SwiperSlide key={image.id}>
               <div
-                className={`relative rounded-2xl overflow-hidden transition-transform duration-300 ${
+                className={`relative h-[300px] w-full overflow-hidden rounded-2xl transition-transform duration-300 md:h-[400px] ${
                   index === activeIndex ? "scale-100" : "scale-90"
                 }`}
               >
-                <img
+                <Image
                   src={image.src}
                   alt=""
-                  className="w-full h-[300px] md:h-[400px] object-cover"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 33vw"
                 />
                 {/* Overlay for non-active slides */}
                 <div
