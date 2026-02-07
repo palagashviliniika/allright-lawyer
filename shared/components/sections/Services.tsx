@@ -21,7 +21,7 @@ export function Services() {
   const activeServiceData = SERVICES.find((s) => s.key === activeService);
 
   return (
-    <section id="services" className="py-8 md:py-12">
+    <section id="services" className="overflow-x-hidden py-8 md:py-12">
       <div className="max-w-7xl mx-auto px-6">
         <SectionHeader title={t("title")} dotsPosition="right" />
 
@@ -66,7 +66,7 @@ export function Services() {
         </div>
 
         {/* Mobile: Swiper — one slide = card + description */}
-        <div className="md:hidden mt-6">
+        <div className="md:hidden mt-6 w-full overflow-hidden [&_.swiper-slide]:!w-full [&_.swiper-slide]:!max-w-full">
           <Swiper
             slidesPerView={1}
             spaceBetween={16}
@@ -76,8 +76,8 @@ export function Services() {
               disableOnInteraction: false,
             }}
             modules={[Autoplay]}
-            className="services-swiper"
-            style={{ overflow: "visible" }}
+            className="services-swiper !overflow-hidden"
+            style={{ width: "100%" }}
           >
             {SERVICES.map((service) => (
               <SwiperSlide key={service.key} className="!h-[440px]">
