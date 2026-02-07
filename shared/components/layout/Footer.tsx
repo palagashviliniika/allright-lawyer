@@ -2,11 +2,10 @@
 
 import { useTranslations } from "next-intl";
 import Image from "next/image";
-import { NAV_LINKS, SOCIAL_LINKS } from "@/shared/enums/navigation";
-import { handleSmoothScroll } from "@/lib/utils";
+import { SOCIAL_LINKS } from "@/shared/enums/navigation";
 
 export function Footer() {
-  const t = useTranslations("navigation");
+  const t = useTranslations("footer");
 
   return (
     <footer className="bg-brand-black py-10 md:py-12">
@@ -27,22 +26,15 @@ export function Footer() {
             </p>
           </div>
 
-          <div className="flex flex-col gap-4 border-r border-brand-navy items-center justify-center">
-            <nav className="flex flex-col gap-3">
-              {NAV_LINKS.map((link) => (
-                <a
-                  key={link.key}
-                  href={link.href}
-                  onClick={(e) => handleSmoothScroll(e, link.href)}
-                  className="text-white text-xl font-bold uppercase hover:text-brand-blue transition-colors duration-300 cursor-pointer"
-                >
-                  {t(link.key)}
-                </a>
-              ))}
-            </nav>
+          {/* Middle: Company description (no nav) */}
+          <div className="flex flex-col justify-center pr-12 border-r border-brand-navy">
+            <p className="text-white text-lg uppercase leading-relaxed text-center font-bold">
+              {t("description")}
+            </p>
           </div>
 
-          <div className="flex flex-col gap-4 items-center justify-center">
+          {/* Right: Social icons */}
+          <div className="flex flex-col justify-center pl-8">
             <div className="flex items-center gap-4">
               {SOCIAL_LINKS.map((social) => (
                 <a
@@ -55,9 +47,9 @@ export function Footer() {
                 >
                   <Image
                     src={social.icon}
-                    alt={social.name}
-                    width={64}
-                    height={64}
+                    alt=""
+                    width={60}
+                    height={60}
                     className="w-16 h-16"
                   />
                 </a>

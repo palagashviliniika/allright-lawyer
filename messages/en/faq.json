@@ -2,21 +2,16 @@
   "title": "Frequently Asked Questions",
   "items": {
     "q1": {
-      "question": "Where does classical Latin literature come from after 45 years?",
-      "answer": "In the Virginia Tech edition, Professor Richard McClintock discovered a remarkable Latin text that combines the word 'consectetur' from the Lorem Ipsum passage and expands it into classical literature."
+      "question": "What services does All Right offer?",
+      "answer": "Legal consultation, contract drafting and review, and legal support for businesses and individuals."
     },
     "q2": {
-      "question": "Where does classical Latin literature come from after 45 years?",
-      "answer": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      "question": "Do you work with companies?",
+      "answer": "Yes, we offer full legal support for business."
     },
     "q3": {
-      "question": "Was the Renaissance period already widespread in Italy?",
-      "answer": "The Renaissance was a period of cultural, artistic, and intellectual rebirth that began in Italy in the 14th century and spread throughout Europe."
-    },
-    "q4": {
-      "question": "The first line of Lorem Ipsum, 'Lorem ipsum dolor sit amet...' is from section 1.10.32?",
-      "answer": "Yes, the famous 'Lorem ipsum dolor sit amet' passage comes from sections 1.10.32 and 1.10.33 of Cicero's 'de Finibus Bonorum et Malorum'."
+      "question": "Can consultation be booked online?",
+      "answer": "Yes, consultation can be booked through the website."
     }
   }
 }
-

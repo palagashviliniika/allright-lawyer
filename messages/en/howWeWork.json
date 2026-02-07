@@ -2,23 +2,29 @@
   "titlePrefix": "How We",
   "titleHighlight": "Work",
   "left": {
-    "caseHeader": "Case Header",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    "description2": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "caseHeader": "Cases",
+    "description": "Our practical experience allows us to effectively manage complex legal processes. The All Right team has in many cases protected clients' interests and saved them from serious financial and legal harm.",
     "more": "More"
   },
   "middle": {
-    "caseHeader": "Case Header",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Readers will be distracted by the readable content.",
-    "more": "More"
+    "caseHeader": "How we work?",
+    "description": "Legal services at All Right are based on a clear process.",
+    "more": "More",
+    "bullets": [
+      "Legal services at All Right are based on a clear process.",
+      "We thoroughly study the client's issue, analyze risks, and offer realistic, practical, and legally sound solutions."
+    ]
   },
   "right": {
-    "caseHeader": "Case Header",
-    "description": "It is a known fact that page content can attract the reader's attention and help with design perception.",
+    "caseHeader": "Why ALL RIGHT?",
+    "description": "Our goal is not only to solve problems but also to prevent them",
     "bullets": [
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "Sed do eiusmod tempor incididunt ut labore et dolore.",
-      "Ut enim ad minim veniam, quis nostrud exercitation."
+      "Experienced team of lawyers",
+      "Clear and understandable legal consultation",
+      "Individual approach to each case",
+      "Prior planning of legal processes",
+      "Reduction of financial and legal risks",
+      "Long-term partnership for business"
     ]
   }
 }

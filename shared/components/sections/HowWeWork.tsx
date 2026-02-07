@@ -2,11 +2,9 @@
 
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { Play } from "lucide-react";
 import { SectionHeader } from "@/shared/components/ui/SectionHeader";
 import { Heading } from "@/shared/components/ui/Heading";
 import { Text } from "@/shared/components/ui/Text";
-import { cn } from "@/lib/utils";
 
 export function HowWeWork() {
   const t = useTranslations("howWeWork");
@@ -22,29 +20,14 @@ export function HowWeWork() {
 
         {/* One container: grid — left 1/4, middle (blue, taller) 1/4, right (white) 1/2 */}
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr_2fr] gap-0 min-h-[420px] overflow-visible pt-10">
-          {/* Left: video placeholder 1/2 height + navy block 1/2 height with single icon */}
-          <div className="flex flex-col rounded-t-2xl lg:rounded-l-2xl lg:rounded-tr-none overflow-hidden shadow-lg h-full min-h-[420px]">
-            {/* Video area: 1/2 of card height */}
-            <div className="relative flex-[0_0_50%] min-h-[180px] bg-[#262D3D] flex items-center justify-center">
-              <button
-                type="button"
-                className="flex h-14 w-14 items-center justify-center rounded-full bg-white text-brand-blue hover:bg-white/95 transition-colors"
-                aria-label="Play video"
-              >
-                <Play className="h-7 w-7 fill-current ml-1" />
-              </button>
-            </div>
-            {/* Navy content: 1/2 height, single centered icon */}
-            <div className="flex flex-1 flex-col flex-[0_0_50%] bg-brand-navy items-center justify-center p-6 min-h-0">
-              <Image
-                src="/images/how-we-work.svg"
-                alt=""
-                width={120}
-                height={120}
-                className="h-20 w-20 md:h-[120px] md:w-[120px] brightness-0 invert"
-                aria-hidden="true"
-              />
-            </div>
+          {/* Left: Cases — dark navy panel with header and description */}
+          <div className="flex flex-col rounded-t-2xl lg:rounded-l-2xl lg:rounded-tr-none overflow-hidden bg-brand-navy shadow-lg p-6 md:p-8 min-h-[420px]">
+            <Heading level="h4" className="text-white font-extrabold text-center mb-4">
+              {t("left.caseHeader")}
+            </Heading>
+            <Text className="text-white/95 text-base text-left leading-relaxed">
+              {t("left.description")}
+            </Text>
           </div>
 
           {/* Middle: bright blue section — taller, centered and on top of left/right */}
@@ -54,9 +37,15 @@ export function HowWeWork() {
                 {t("middle.caseHeader")}
               </Heading>
               <div className="mx-auto w-8 h-[1px] bg-white rounded-full mb-4" aria-hidden="true" />
-              <Text className="text-white/95 text-base flex-1 mb-6">
-                {t("middle.description")}
-              </Text>
+              <ul className="space-y-3 flex-1 mb-6 list-disc list-outside pl-5">
+                {[0, 1].map((i) => (
+                  <li key={i} className="marker:text-white pl-1">
+                    <Text className="text-white/95 text-base" as="span">
+                      {t(`middle.bullets.${i}`)}
+                    </Text>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
 
@@ -69,7 +58,7 @@ export function HowWeWork() {
               {t("right.description")}
             </Text>
             <ul className="space-y-3 pl-6 md:pl-8">
-              {[0, 1, 2].map((i) => (
+              {[0, 1, 2, 3, 4, 5].map((i) => (
                 <li key={i} className="flex gap-3 items-center">
                   <Image
                     src={i % 2 === 0 ? "/images/dots-left.svg" : "/images/dots-right.svg"}

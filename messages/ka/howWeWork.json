@@ -2,23 +2,29 @@
   "titlePrefix": "როგორ",
   "titleHighlight": "ვმუშაობთ",
   "left": {
-    "caseHeader": "ქეისი ჰედერი",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    "description2": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "caseHeader": "ქეისები",
+    "description": "ჩვენი პრაქტიკული გამოცდილება გვაძლევს საშუალებას, ეფექტურად ვმართოთ რთული სამართლებრივი პროცესები. All Right-ის გუნდმა არაერთ შემთხვევაში დაიცვა კლიენტის ინტერესები და თავიდან აარიდა მას სერიოზული ფინანსური და სამართლებრივი ზიანი.",
     "more": "მეტი"
   },
   "middle": {
-    "caseHeader": "ქეისი ჰედერი",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Readers will be distracted by the readable content.",
-    "more": "მეტი"
+    "caseHeader": "როგორ ვმუშაობთ?",
+    "description": "All Right-ში სამართლებრივი მომსახურება ეფუძნება მკაფიო პროცესს.",
+    "more": "მეტი",
+    "bullets": [
+      "All Right-ში სამართლებრივი მომსახურება ეფუძნება მკაფიო პროცესს.",
+      "ჩვენ დეტალურად ვსწავლობთ კლიენტის საკითხს, ვაანალიზებთ რისკებს და ვთავაზობთ რეალურ, პრაქტიკულ და სამართლებრივად გამართულ გადაწყვეტილებებს."
+    ]
   },
   "right": {
-    "caseHeader": "ქეისი ჰედერი",
-    "description": "ცნობილი ფაქტია, რომ გვერდის წაკითხვადი კონტენტი შეიძლება მკითხველის ყურადღება მიიპყროს და დიზაინის აღქმაში დაგვეხმაროს.",
+    "caseHeader": "ᲠᲐᲢᲝᲛ ALL RIGHT?",
+    "description": "ჩვენი მიზანია არა მხოლოდ პრობლემის მოგვარება, არამედ მისი თავიდან აცილება",
     "bullets": [
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "Sed do eiusmod tempor incididunt ut labore et dolore.",
-      "Ut enim ad minim veniam, quis nostrud exercitation."
+      "გამოცდილ იურისტთა გუნდი",
+      "მკაფიო და გასაგები იურიდიული კონსულტაცია",
+      "ინდივიდუალური მიდგომა თითოეულ საქმეზე",
+      "სამართლებრივი პროცესების წინასწარი დაგეგმვა",
+      "ფინანსური და იურიდიული რისკების შემცირება",
+      "გრძელვადიანი პარტნიორობა ბიზნესისთვის"
     ]
   }
 }

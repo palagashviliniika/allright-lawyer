@@ -1,17 +1,18 @@
 {
   "title": "Services",
   "items": {
-    "legal": "Legal Persons",
-    "physical": "Physical Persons",
+    "legal": "Legal entities",
+    "physical": "Individuals",
     "audits": "Audits",
     "court": "Court",
-    "realEstate": "Real Estate"
+    "realEstate": "Real estate"
   },
   "descriptions": {
-    "legal": "Comprehensive legal assistance for businesses and organizations: company formation, corporate governance, contract drafting and review, regulatory compliance, and business dispute resolution. All Right supports your business at every stage.",
-    "physical": "Legal assistance for individuals: real estate transactions, family law matters, employment agreements, consumer protection, and various types of legal disputes. All Right helps you at every step.",
-    "audits": "Professional audit services including financial audits, compliance audits, internal control assessments, and regulatory reviews. We ensure transparency and accuracy in your business operations.",
-    "court": "Expert court representation for civil, commercial, and administrative cases. Our experienced attorneys will protect your interests through litigation, appeals, and alternative dispute resolution.",
-    "realEstate": "Full-service real estate legal support: property transactions, title verification, lease agreements, construction contracts, and property dispute resolution. Secure your investments with All Right."
-  }
+    "legal": "Legal support for companies, including contract drafting and review, business legal consultation, labour law, and protection of company interests at every stage.",
+    "physical": "Legal assistance for individuals: real estate, family law, employment rights, property protection and various types of legal disputes. All Right will help you at every stage.",
+    "audits": "Legal audit for companies, enabling you to identify risks, gaps and legal threats in business in advance.",
+    "court": "Expert court representation in civil, commercial and administrative cases. Our experienced lawyers will protect your interests in court proceedings.",
+    "realEstate": "Real estate law: purchase and sale, registration, land plots, protection of property rights and legal security for any real estate transaction."
+  },
+  "learnMore": "Learn more"
 }

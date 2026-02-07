@@ -12,7 +12,6 @@ import { CTAButton } from "@/shared/components/ui/CTAButton";
 
 export function Services() {
   const t = useTranslations("services");
-  const tCommon = useTranslations("common");
   const [activeService, setActiveService] = useState<string>(SERVICES[0].key);
   
   const activeServiceData = SERVICES.find((s) => s.key === activeService);
@@ -44,7 +43,7 @@ export function Services() {
           </Text>
           <div className="flex justify-end">
             <CTAButton
-              text={tCommon("bookConsultation")}
+              text={t("learnMore")}
               icon={
                 activeServiceData && (
                   <Image
