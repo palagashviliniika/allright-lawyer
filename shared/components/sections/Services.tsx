@@ -4,7 +4,8 @@ import { useState } from "react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper/modules";
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { SectionHeader } from "@/shared/components/ui/SectionHeader";
 import { ServiceCard } from "@/shared/components/ui/ServiceCard";
 import { SERVICES } from "@/shared/enums";
@@ -13,6 +14,7 @@ import { Text } from "@/shared/components/ui/Text";
 import { CTAButton } from "@/shared/components/ui/CTAButton";
 
 import "swiper/css";
+import "swiper/css/pagination";
 
 export function Services() {
   const t = useTranslations("services");
@@ -66,16 +68,24 @@ export function Services() {
         </div>
 
         {/* Mobile: Swiper — one slide = card + description */}
-        <div className="md:hidden mt-6 w-full overflow-hidden [&_.swiper-slide]:!w-full [&_.swiper-slide]:!max-w-full">
+        <div className="md:hidden mt-6 w-full overflow-hidden relative [&_.swiper-slide]:!w-full [&_.swiper-slide]:!max-w-full">
           <Swiper
             slidesPerView={1}
             spaceBetween={16}
             loop={true}
+            navigation={{
+              prevEl: ".services-prev",
+              nextEl: ".services-next",
+            }}
             autoplay={{
               delay: 5000,
               disableOnInteraction: false,
             }}
-            modules={[Autoplay]}
+            pagination={{
+              el: ".services-pagination",
+              clickable: true,
+            }}
+            modules={[Autoplay, Navigation, Pagination]}
             className="services-swiper !overflow-hidden"
             style={{ width: "100%" }}
           >
@@ -125,6 +135,19 @@ export function Services() {
               </SwiperSlide>
             ))}
           </Swiper>
+          <button
+            className="services-prev absolute left-2 top-1/2 z-10 -translate-y-1/2 w-10 h-10 rounded-full bg-brand-navy/50 flex items-center justify-center text-brand-blue hover:bg-brand-navy/80 hover:text-white transition-colors duration-300 cursor-pointer"
+            aria-label="Previous"
+          >
+            <ChevronLeft className="w-6 h-6 text-white" />
+          </button>
+          <button
+            className="services-next absolute right-2 top-1/2 z-10 -translate-y-1/2 w-10 h-10 rounded-full bg-brand-navy/50 flex items-center justify-center text-brand-blue hover:bg-brand-navy/80 hover:text-white transition-colors duration-300 cursor-pointer"
+            aria-label="Next"
+          >
+            <ChevronRight className="w-6 h-6 text-white" />
+          </button>
+          <div className="services-pagination flex justify-center gap-1.5 mt-4 [&_.swiper-pagination-bullet]:!w-2 [&_.swiper-pagination-bullet]:!h-2 [&_.swiper-pagination-bullet]:!opacity-60 [&_.swiper-pagination-bullet-active]:!opacity-100 [&_.swiper-pagination-bullet]:!bg-brand-blue" />
         </div>
       </div>
     </section>

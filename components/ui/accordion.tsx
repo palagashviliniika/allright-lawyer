@@ -18,7 +18,7 @@ function AccordionItem({
   return (
     <AccordionPrimitive.Item
       data-slot="accordion-item"
-      className={cn("relative", className)}
+      className={cn("relative w-full min-w-0", className)}
       {...props}
     />
   )
@@ -30,11 +30,11 @@ function AccordionTrigger({
   ...props
 }: React.ComponentProps<typeof AccordionPrimitive.Trigger>) {
   return (
-    <AccordionPrimitive.Header className="flex relative">
+    <AccordionPrimitive.Header className="flex relative w-full min-w-0">
       <AccordionPrimitive.Trigger
         data-slot="accordion-trigger"
         className={cn(
-          "focus-visible:border-ring focus-visible:ring-ring/50 flex flex-1 items-center justify-between gap-4 bg-brand-navy rounded-t-3xl border-b-8 border-brand-blue py-4 px-6 md:px-8 text-white text-left text-base md:text-2xl font-bold transition-all outline-none focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 cursor-pointer",
+          "focus-visible:border-ring focus-visible:ring-ring/50 flex min-w-0 flex-1 items-center justify-between gap-4 bg-brand-navy rounded-t-3xl border-b-8 border-brand-blue py-4 px-6 md:px-8 text-white text-left text-base md:text-2xl font-bold transition-all outline-none focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 cursor-pointer",
           className
         )}
         {...props}
@@ -55,10 +55,10 @@ function AccordionContent({
   return (
     <AccordionPrimitive.Content
       data-slot="accordion-content"
-      className="data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden rounded-b-3xl px-6 md:px-8 pt-6 font-medium text-sm md:text-lg bg-brand-light"
+      className="data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down w-full min-w-0 overflow-hidden rounded-b-3xl px-6 md:px-8 pt-6 font-medium text-sm md:text-lg bg-brand-light"
       {...props}
     >
-      <div className={cn("pt-0 pb-4", className)}>{children}</div>
+      <div className={cn("min-w-0 break-words pt-0 pb-4", className)}>{children}</div>
     </AccordionPrimitive.Content>
   )
 }

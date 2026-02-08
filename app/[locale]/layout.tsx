@@ -5,6 +5,7 @@ import { getMessages, setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 import { Header } from "@/shared/components/layout/Header";
 import { ScrollToTop } from "@/shared/components/ui/ScrollToTop";
+import { FloatingContactButton } from "@/shared/components/ui/FloatingContactButton";
 import { Footer } from "@/shared/components/layout/Footer";
 import "../globals.css";
 
@@ -52,6 +53,10 @@ export function generateStaticParams() {
 export const metadata: Metadata = {
   title: "Allright Law Firm",
   description: "Professional legal services you can trust",
+  icons: {
+    icon: "/icon.png",
+    apple: "/icon.png",
+  },
 };
 
 export default async function LocaleLayout({
@@ -72,6 +77,7 @@ export default async function LocaleLayout({
           <Header />
           {children}
           <Footer />
+          <FloatingContactButton />
           <ScrollToTop />
         </NextIntlClientProvider>
       </body>

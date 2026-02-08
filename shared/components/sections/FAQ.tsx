@@ -27,8 +27,8 @@ export function FAQ() {
           className="max-w-[220px] md:max-w-full"
         />
 
-        <div className="mt-8">
-          <Accordion type="single" collapsible defaultValue="q1" className="space-y-4">
+        <div className="mt-8 w-full max-w-3xl">
+          <Accordion type="single" collapsible defaultValue="q1" className="w-full space-y-4">
             {FAQ_ITEMS.map((item) => (
               <AccordionItem key={item.id} value={item.id}>
                 <AccordionTrigger>

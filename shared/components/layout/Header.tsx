@@ -1,16 +1,21 @@
 "use client";
 
 import { useState } from "react";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
 import { NAV_LINKS } from "@/shared/enums/navigation";
+import { useRouter, usePathname } from "@/i18n/navigation";
 import { CTAButton } from "@/shared/components/ui/CTAButton";
 import { handleSmoothScroll } from "@/lib/utils";
+import { routing } from "@/i18n/routing";
 
 export function Header() {
   const t = useTranslations("navigation");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const locale = useLocale();
+  const router = useRouter();
+  const pathname = usePathname();
 
   const closeMenu = () => setIsMenuOpen(false);
 
@@ -47,6 +52,27 @@ export function Header() {
               </li>
             ))}
           </ul>
+
+          <div className="hidden md:flex items-center gap-2">
+            {routing.locales.map((loc) => (
+              <button
+                key={loc}
+                type="button"
+                onClick={() => router.replace(pathname, { locale: loc })}
+                className={`rounded-full p-1 transition-opacity hover:opacity-100 focus:outline-none cursor-pointer ${locale === loc ? "opacity-100" : "opacity-60"}`}
+                aria-label={loc === "en" ? "English" : "ქართული"}
+                aria-current={locale === loc ? "true" : undefined}
+              >
+                <Image
+                  src={loc === "en" ? "/images/en.webp" : "/images/ka.webp"}
+                  alt=""
+                  width={28}
+                  height={28}
+                  className="rounded-full w-7 h-7 object-cover"
+                />
+              </button>
+            ))}
+          </div>
 
           <CTAButton text={t("cta")} href="#contact" className="hidden md:inline-flex" />
 
@@ -91,6 +117,29 @@ export function Header() {
               </li>
             ))}
           </ul>
+          <div className="flex items-center gap-3 md:hidden">
+            {routing.locales.map((loc) => (
+              <button
+                key={loc}
+                type="button"
+                onClick={() => {
+                  router.replace(pathname, { locale: loc });
+                  closeMenu();
+                }}
+                className={`rounded-full p-1 transition-opacity hover:opacity-100 focus:outline-none cursor-pointer ${locale === loc ? "opacity-100" : "opacity-60"}`}
+                aria-label={loc === "en" ? "English" : "ქართული"}
+                aria-current={locale === loc ? "true" : undefined}
+              >
+                <Image
+                  src={loc === "en" ? "/images/en.webp" : "/images/ka.webp"}
+                  alt=""
+                  width={32}
+                  height={32}
+                  className="rounded-full w-8 h-8 object-cover"
+                />
+              </button>
+            ))}
+          </div>
           <a
             href="#contact"
             onClick={(e) => handleNavClick(e, "#contact")}

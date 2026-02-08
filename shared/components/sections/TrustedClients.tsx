@@ -73,7 +73,7 @@ export function TrustedClients() {
             {CLIENTS.map((client) => (
               <SwiperSlide key={client.id}>
                 <div
-                  className={`${client.bgColor} rounded-full w-44 h-44 md:w-40 md:h-40 mx-auto flex items-center justify-center`}
+                  className={`${client.bgColor} rounded-full w-36 h-36 md:w-40 md:h-40 mx-auto flex items-center justify-center`}
                 >
                   <span className="text-xs text-center px-2 font-semibold text-gray-600">
                     {client.name}
