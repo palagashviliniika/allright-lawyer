@@ -16,11 +16,13 @@ export function Contact() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phone: "",
     message: "",
   });
   const [errors, setErrors] = useState<{
     name?: string;
     email?: string;
+    phone?: string;
     message?: string;
   }>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -45,6 +47,10 @@ export function Contact() {
       newErrors.email = t("form.validation.emailRequired");
     } else if (!validateEmail(formData.email)) {
       newErrors.email = t("form.validation.emailInvalid");
+    }
+
+    if (!formData.phone.trim()) {
+      newErrors.phone = t("form.validation.phoneRequired");
     }
 
     if (!formData.message.trim()) {
@@ -81,7 +87,7 @@ export function Contact() {
           type: "success",
           message: t("form.success"),
         });
-        setFormData({ name: "", email: "", message: "" });
+        setFormData({ name: "", email: "", phone: "", message: "" });
         setErrors({});
       } else {
         setSubmitStatus({
@@ -179,6 +185,22 @@ export function Contact() {
                   disabled={isSubmitting}
                 />
                 <AnimatedErrorMessage error={errors.email} />
+              </div>
+
+              <div>
+                <Input
+                  type="tel"
+                  name="phone"
+                  placeholder={t("form.phone")}
+                  value={formData.phone}
+                  onChange={handleChange}
+                  className={cn(
+                    "bg-white rounded text-gray-900 placeholder:text-gray-400 border-gray-300 focus-visible:border-brand-blue",
+                    errors.phone && "border-red-300 focus-visible:border-red-300"
+                  )}
+                  disabled={isSubmitting}
+                />
+                <AnimatedErrorMessage error={errors.phone} />
               </div>
 
               <div>

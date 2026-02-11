@@ -5,6 +5,7 @@
   "form": {
     "name": "Name",
     "email": "Email",
+    "phone": "Phone",
     "message": "Message",
     "send": "Send",
     "sending": "Sending...",
@@ -14,6 +15,7 @@
       "nameRequired": "Name is required",
       "emailRequired": "Email is required",
       "emailInvalid": "Please enter a valid email address",
+      "phoneRequired": "Phone is required",
       "messageRequired": "Message is required"
     }
   }

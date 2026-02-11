@@ -5,11 +5,12 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Swiper, SwiperSlide } from "swiper/react";
 import type { Swiper as SwiperType } from "swiper";
-import { Autoplay } from "swiper/modules";
+import { Autoplay, Pagination } from "swiper/modules";
 import { SectionHeader } from "@/shared/components/ui/SectionHeader";
 import { WHY_CHOOSE_US_IMAGES } from "@/shared/enums/services";
 
 import "swiper/css";
+import "swiper/css/pagination";
 
 export function WhyChooseUs() {
   const t = useTranslations("whyChooseUs");
@@ -31,7 +32,11 @@ export function WhyChooseUs() {
             delay: 5000,
             disableOnInteraction: false,
           }}
-          modules={[Autoplay]}
+          pagination={{
+            el: ".why-choose-us-pagination",
+            clickable: true,
+          }}
+          modules={[Autoplay, Pagination]}
           className="why-choose-us-swiper"
           breakpoints={{
             768: {
@@ -70,6 +75,7 @@ export function WhyChooseUs() {
             </SwiperSlide>
           ))}
         </Swiper>
+        <div className="why-choose-us-pagination flex justify-center gap-1.5 mt-4 [&_.swiper-pagination-bullet]:!w-2 [&_.swiper-pagination-bullet]:!h-2 [&_.swiper-pagination-bullet]:!opacity-60 [&_.swiper-pagination-bullet-active]:!opacity-100 [&_.swiper-pagination-bullet]:!bg-brand-blue" />
       </div>
     </section>
   );

@@ -14,3 +14,12 @@ export const WHY_CHOOSE_US_IMAGES = [
   { id: "img5", src: "/images/Real_Estate.webp" },
   { id: "img6", src: "/images/RealEstate_Reg.webp" },
 ];
+
+export const PARTNERS = [
+  { id: "grand", src: "/images/partners/Grand.webp", name: "Grand Electronics" },
+  { id: "mctrans", src: "/images/partners/MCTrans.webp", name: "MCTrans" },
+  { id: "moby", src: "/images/partners/Moby.webp", name: "Moby" },
+  { id: "oukitel", src: "/images/partners/Oukitel.webp", name: "Oukitel" },
+  { id: "shoper", src: "/images/partners/Shoper.webp", name: "Shoper" },
+  { id: "sync", src: "/images/partners/Sync.webp", name: "Sync" },
+];
