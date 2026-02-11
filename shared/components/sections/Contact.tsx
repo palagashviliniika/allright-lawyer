@@ -121,7 +121,7 @@ export function Contact() {
         <SectionHeader title={t("title")} dotsPosition="left" />
 
         <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-6 order-2 lg:order-1">
             <div className="flex items-center gap-4">
               <div className="shrink-0">
                 <Image
@@ -145,7 +145,12 @@ export function Contact() {
                   className="w-8 h-8"
                 />
               </div>
-              <p className="text-white text-xl">{t("phone")}</p>
+              <a
+                href={`tel:${t("phone").replace(/\s/g, "")}`}
+                className="text-white text-xl hover:underline"
+              >
+                {t("phone")}
+              </a>
             </div>
 
             <div className="mt-5 w-full">
@@ -153,7 +158,7 @@ export function Contact() {
             </div>
           </div>
 
-          <div>
+          <div className="order-1 lg:order-2">
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
               <div>
                 <Input
@@ -173,22 +178,6 @@ export function Contact() {
 
               <div>
                 <Input
-                  type="email"
-                  name="email"
-                  placeholder={t("form.email")}
-                  value={formData.email}
-                  onChange={handleChange}
-                  className={cn(
-                    "bg-white rounded text-gray-900 placeholder:text-gray-400 border-gray-300 focus-visible:border-brand-blue",
-                    errors.email && "border-red-300 focus-visible:border-red-300"
-                  )}
-                  disabled={isSubmitting}
-                />
-                <AnimatedErrorMessage error={errors.email} />
-              </div>
-
-              <div>
-                <Input
                   type="tel"
                   name="phone"
                   placeholder={t("form.phone")}
@@ -201,6 +190,22 @@ export function Contact() {
                   disabled={isSubmitting}
                 />
                 <AnimatedErrorMessage error={errors.phone} />
+              </div>
+
+              <div>
+                <Input
+                  type="email"
+                  name="email"
+                  placeholder={t("form.email")}
+                  value={formData.email}
+                  onChange={handleChange}
+                  className={cn(
+                    "bg-white rounded text-gray-900 placeholder:text-gray-400 border-gray-300 focus-visible:border-brand-blue",
+                    errors.email && "border-red-300 focus-visible:border-red-300"
+                  )}
+                  disabled={isSubmitting}
+                />
+                <AnimatedErrorMessage error={errors.email} />
               </div>
 
               <div>

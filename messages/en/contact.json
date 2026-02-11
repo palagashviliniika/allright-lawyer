@@ -6,7 +6,7 @@
     "name": "Name",
     "email": "Email",
     "phone": "Phone",
-    "message": "Message",
+    "message": "Comment",
     "send": "Send",
     "sending": "Sending...",
     "success": "Message sent successfully!",
@@ -16,7 +16,7 @@
       "emailRequired": "Email is required",
       "emailInvalid": "Please enter a valid email address",
       "phoneRequired": "Phone is required",
-      "messageRequired": "Message is required"
+      "messageRequired": "Comment is required"
     }
   }
 }
