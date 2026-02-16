@@ -60,7 +60,7 @@ export function TrustedClients() {
         >
           {PARTNERS.map((partner) => (
             <SwiperSlide key={partner.id}>
-              <div className="relative w-36 h-36 md:w-40 md:h-40 mx-auto rounded-full overflow-hidden bg-white flex items-center justify-center">
+              <div className="relative w-36 h-36 md:w-40 md:h-40 mx-auto rounded-full overflow-hidden bg-[#1a1a1a] flex items-center justify-center">
                 <Image
                   src={partner.src}
                   alt={partner.name}

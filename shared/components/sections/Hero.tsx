@@ -38,7 +38,7 @@ export function Hero() {
 
                     <Heading
                         level="h1"
-                        className="text-white"
+                        className="text-white md:!text-[44px] leading-tight"
                     >
                         {t("title")}
                     </Heading>
