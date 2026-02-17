@@ -138,11 +138,11 @@ export function Contact() {
             <div className="flex items-center gap-4">
               <div className="shrink-0">
                 <Image
-                  src="/images/contact_email.svg"
+                  src="/images/contact_Phone_noBG.svg"
                   alt="Email"
                   width={32}
                   height={32}
-                  className="w-8 h-8"
+                  className="w-8 h-8 px-1"
                 />
               </div>
               <a
