@@ -7,7 +7,7 @@ import { Header } from "@/shared/components/layout/Header";
 import { ScrollToTop } from "@/shared/components/ui/ScrollToTop";
 import { FloatingContactButton } from "@/shared/components/ui/FloatingContactButton";
 import { Footer } from "@/shared/components/layout/Footer";
-import "../globals.css";
+import { DocumentLang } from "@/shared/components/ui/DocumentLang";
 
 const firaGO = localFont({
   src: [
@@ -71,16 +71,15 @@ export default async function LocaleLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale}>
-      <body className={`${firaGO.variable} antialiased`}>
-        <NextIntlClientProvider messages={messages}>
-          <Header />
-          {children}
-          <Footer />
-          <FloatingContactButton />
-          <ScrollToTop />
-        </NextIntlClientProvider>
-      </body>
-    </html>
+    <div className={`${firaGO.variable} antialiased`}>
+      <DocumentLang lang={locale} />
+      <NextIntlClientProvider messages={messages}>
+        <Header />
+        {children}
+        <Footer />
+        <FloatingContactButton />
+        <ScrollToTop />
+      </NextIntlClientProvider>
+    </div>
   );
 }

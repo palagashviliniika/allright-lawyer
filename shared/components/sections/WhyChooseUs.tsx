@@ -12,26 +12,39 @@ import { WHY_CHOOSE_US_IMAGES } from "@/shared/enums/services";
 import "swiper/css";
 import "swiper/css/pagination";
 
-export function WhyChooseUs() {
+export type WhyChooseUsData = {
+  title?: string | null;
+  images?: Array<{ alt?: string; url?: string }> | null;
+};
+
+export function WhyChooseUs({ whyChooseUs }: { whyChooseUs?: WhyChooseUsData }) {
   const t = useTranslations("whyChooseUs");
   const [activeIndex, setActiveIndex] = useState(0);
+
+  const sectionTitle = whyChooseUs?.title ?? t("title");
+  const cmsImages = whyChooseUs?.images?.filter((img) => img.url) ?? [];
+  const images =
+    cmsImages.length > 0
+      ? cmsImages.map((img, i) => ({ id: `cms-${i}`, src: img.url!, alt: img.alt ?? "" }))
+      : WHY_CHOOSE_US_IMAGES.map((img) => ({ id: img.id, src: img.src, alt: "" }));
 
   return (
     <section id="why-us" className="py-12 md:py-16 flex flex-col items-center justify-center">
       <div className="max-w-7xl px-6">
-        <SectionHeader title={t("title")} dotsPosition="left" />
+        <SectionHeader title={sectionTitle} dotsPosition="left" />
       </div>
 
       <div className="mt-8 max-w-7xl mx-auto px-4 w-full">
         <Swiper
           slidesPerView={1}
           spaceBetween={16}
-          loop={true}
+          loop={images.length > 1}
           centeredSlides={true}
-          autoplay={{
-            delay: 5000,
-            disableOnInteraction: false,
-          }}
+          autoplay={
+            images.length > 1
+              ? { delay: 5000, disableOnInteraction: false }
+              : false
+          }
           pagination={{
             el: ".why-choose-us-pagination",
             clickable: true,
@@ -51,7 +64,7 @@ export function WhyChooseUs() {
             setActiveIndex(swiper.realIndex);
           }}
         >
-          {WHY_CHOOSE_US_IMAGES.map((image, index) => (
+          {images.map((image, index) => (
             <SwiperSlide key={image.id}>
               <div
                 className={`relative h-[380px] md:h-[400px] w-full overflow-hidden rounded-2xl transition-transform duration-300 ${
@@ -60,7 +73,7 @@ export function WhyChooseUs() {
               >
                 <Image
                   src={image.src}
-                  alt=""
+                  alt={image.alt}
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, 33vw"

@@ -10,29 +10,46 @@ import { PARTNERS } from "@/shared/enums/services";
 
 import "swiper/css";
 
-export function TrustedClients() {
+export type TrustedClientsData = {
+  title?: string | null;
+  partners?: Array<{ name?: string; logoUrl?: string }> | null;
+};
+
+export function TrustedClients({ trustedClients: trustedClientsData }: { trustedClients?: TrustedClientsData }) {
   const t = useTranslations("trustedClients");
+
+  const sectionTitle = trustedClientsData?.title ?? t("title");
+  const cmsPartners = trustedClientsData?.partners?.filter((p) => p.logoUrl) ?? [];
+  const partners =
+    cmsPartners.length > 0
+      ? cmsPartners.map((p, i) => ({
+          id: `cms-${i}`,
+          name: p.name ?? "",
+          src: p.logoUrl!,
+        }))
+      : PARTNERS.map((p) => ({ id: p.id, name: p.name, src: p.src }));
 
   return (
     <section id="trusted-clients" className="py-12 md:py-16">
       <div className="max-w-7xl mx-auto px-6">
-        <SectionHeader title={t("title")} dotsPosition="left" />
+        <SectionHeader title={sectionTitle} dotsPosition="left" />
       </div>
 
       <div className="mt-8 max-w-7xl mx-auto px-6 w-full overflow-hidden relative">
         <Swiper
           slidesPerView={2}
           spaceBetween={0}
-          loop={true}
-          centeredSlides={true}
+          loop={partners.length > 1}
+          centeredSlides={partners.length <= 2}
           navigation={{
             prevEl: ".clients-prev",
             nextEl: ".clients-next",
           }}
-          autoplay={{
-            delay: 3000,
-            disableOnInteraction: false,
-          }}
+          autoplay={
+            partners.length > 1
+              ? { delay: 3000, disableOnInteraction: false }
+              : false
+          }
           modules={[Navigation, Autoplay]}
           className="trusted-clients-swiper w-full !overflow-hidden"
           breakpoints={{
@@ -58,7 +75,7 @@ export function TrustedClients() {
             },
           }}
         >
-          {PARTNERS.map((partner) => (
+          {partners.map((partner) => (
             <SwiperSlide key={partner.id}>
               <div className="relative w-36 h-36 md:w-40 md:h-40 mx-auto rounded-full overflow-hidden bg-[#1a1a1a] flex items-center justify-center">
                 <Image

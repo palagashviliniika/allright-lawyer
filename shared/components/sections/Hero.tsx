@@ -7,8 +7,16 @@ import { Text } from "@/shared/components/ui/Text";
 import { Button } from "@/shared/components/ui/Button";
 import { Divider } from "@/shared/components/ui/Divider";
 
-export function Hero() {
+export type HeroData = {
+  title?: string | null;
+  subtitle?: string | null;
+};
+
+export function Hero({ hero }: { hero?: HeroData }) {
     const t = useTranslations("hero");
+
+    const title = hero?.title ?? t("title");
+    const description = hero?.subtitle ?? t("description");
 
     return (
         <section id="about" className="relative pt-20 min-h-[400px] border-b-4 border-brand-blue">
@@ -40,7 +48,7 @@ export function Hero() {
                         level="h1"
                         className="text-white md:!text-[44px] leading-tight"
                     >
-                        {t("title")}
+                        {title}
                     </Heading>
 
                     <Divider />
@@ -49,7 +57,7 @@ export function Hero() {
                         variant="lead"
                         className="text-left text-white mb-8 max-w-3xl"
                     >
-                        {t("description")}
+                        {description}
                     </Text>
 
                     <div className="flex w-full flex-col gap-4 md:w-auto md:flex-row">

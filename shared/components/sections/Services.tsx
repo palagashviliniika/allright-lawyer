@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -16,16 +16,36 @@ import { CTAButton } from "@/shared/components/ui/CTAButton";
 import "swiper/css";
 import "swiper/css/pagination";
 
-export function Services() {
+export type ServicesData = {
+  title?: string | null;
+  items?: Array<{ key?: string; title?: string; description?: string }> | null;
+};
+
+function getItemsByKey(services: ServicesData | undefined): Record<string, { title?: string; description?: string }> {
+  if (!services?.items) return {};
+  return Object.fromEntries(
+    services.items
+      .filter((i) => i.key)
+      .map((i) => [i.key!, { title: i.title, description: i.description }])
+  );
+}
+
+export function Services({ services: servicesData }: { services?: ServicesData }) {
   const t = useTranslations("services");
   const [activeService, setActiveService] = useState<string>(SERVICES[0].key);
+
+  const itemsByKey = useMemo(() => getItemsByKey(servicesData), [servicesData]);
+  const sectionTitle = servicesData?.title ?? t("title");
+
+  const getLabel = (key: string) => itemsByKey[key]?.title ?? t(`items.${key}`);
+  const getDescription = (key: string) => itemsByKey[key]?.description ?? t(`descriptions.${key}`);
 
   const activeServiceData = SERVICES.find((s) => s.key === activeService);
 
   return (
     <section id="services" className="overflow-x-hidden py-8 md:py-12">
       <div className="max-w-7xl mx-auto px-6">
-        <SectionHeader title={t("title")} dotsPosition="right" />
+        <SectionHeader title={sectionTitle} dotsPosition="right" />
 
         {/* Desktop: grid + description panel */}
         <div className="hidden md:block mt-6">
@@ -34,7 +54,7 @@ export function Services() {
               <ServiceCard
                 key={service.key}
                 icon={service.icon}
-                label={t(`items.${service.key}`)}
+                label={getLabel(service.key)}
                 isActive={activeService === service.key}
                 onClick={() => setActiveService(service.key)}
               />
@@ -42,10 +62,10 @@ export function Services() {
           </div>
           <div className="bg-brand-blue rounded-b-2xl p-6 md:p-8">
             <Heading level="h4" className="text-white mb-3">
-              {t(`items.${activeService}`)}
+              {getLabel(activeService)}
             </Heading>
             <Text className="text-white mb-6">
-              {t(`descriptions.${activeService}`)}
+              {getDescription(activeService)}
             </Text>
             <div className="flex justify-end">
               <CTAButton
@@ -103,16 +123,16 @@ export function Services() {
                       />
                     </div>
                     <Text className="text-white text-center font-semibold text-sm">
-                      {t(`items.${service.key}`)}
+                      {getLabel(service.key)}
                     </Text>
                   </div>
                   <div className="flex flex-1 flex-col bg-brand-blue p-6 rounded-b-2xl">
                     <Heading level="h4" className="text-white mb-3 shrink-0">
-                      {t(`items.${service.key}`)}
+                      {getLabel(service.key)}
                     </Heading>
                     <div className="flex-1 mb-4">
                       <Text className="text-white text-sm">
-                        {t(`descriptions.${service.key}`)}
+                        {getDescription(service.key)}
                       </Text>
                     </div>
                     <div className="flex shrink-0 justify-end">
