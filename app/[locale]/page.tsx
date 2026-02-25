@@ -8,34 +8,16 @@ import { FAQ } from "@/shared/components/sections/FAQ";
 import { Contact } from "@/shared/components/sections/Contact";
 import { client } from "@/lib/sanity";
 import { heroQuery, servicesQuery, whyChooseUsQuery, trustedClientsQuery, faqQuery, howWeWorkQuery } from "@/lib/sanity.queries";
+import type {
+  ServicesQueryResult,
+  WhyChooseUsQueryResult,
+  TrustedClientsQueryResult,
+  FAQQueryResult,
+  HowWeWorkQueryResult,
+} from "@/shared/types/sanity";
 
-type ServicesQueryResult = {
-  title?: string | null;
-  items?: Array<{ key?: string; title?: string; description?: string }> | null;
-} | null;
-
-type WhyChooseUsQueryResult = {
-  title?: string | null;
-  images?: Array<{ alt?: string; url?: string }> | null;
-} | null;
-
-type TrustedClientsQueryResult = {
-  title?: string | null;
-  partners?: Array<{ name?: string; logoUrl?: string }> | null;
-} | null;
-
-type FAQQueryResult = {
-  title?: string | null;
-  items?: Array<{ question?: string; answer?: string }> | null;
-} | null;
-
-type HowWeWorkQueryResult = {
-  titlePrefix?: string | null;
-  titleHighlight?: string | null;
-  left?: { caseHeader?: string; description?: string } | null;
-  middle?: { caseHeader?: string; bullets?: string[] | null } | null;
-  right?: { caseHeader?: string; description?: string; bullets?: string[] | null } | null;
-} | null;
+// Revalidate this page at most every 60 seconds so CMS changes appear shortly after you publish in Studio.
+export const revalidate = 60;
 
 export default async function Home({
   params,
